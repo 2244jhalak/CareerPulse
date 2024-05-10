@@ -1,10 +1,77 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import './index.css'
+
+import Root from './Layout/Root';
+import Home from './components/Home/Home';
+
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import AuthProvider from './provider/AuthProvider';
+import AllJobs from './components/AllJobs/AllJobs';
+import PrivateRoute from './Routes/PrivateRoute';
+import MyJobs from './components/MyJobs/MyJobs';
+import AddJobs from './components/AddJobs/AddJobs';
+import AppliedJobs from './components/AppliedJobs/AppliedJobs';
+
+// import ErrorPage from './components/ErrorPage/ErrorPage';
+
+
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root></Root>,
+    // errorElement:<ErrorPage></ErrorPage>,
+    children:[
+      {
+        path:"/",
+        element:<Home></Home>
+      },
+      {
+        path:"/login",
+        element:<Login></Login>
+      },
+      {
+        path:"/register",
+        element:<Register></Register>
+      },
+      {
+        path:"/all",
+        element:<AllJobs></AllJobs>
+      },
+      {
+        path:'/my',
+        element:<PrivateRoute><MyJobs></MyJobs></PrivateRoute>
+      },
+      {
+        path:'/add',
+        element:<PrivateRoute><AddJobs></AddJobs></PrivateRoute>
+      },
+      {
+        path:'/applied',
+        element:<PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>
+      }
+     
+      
+     
+      
+      
+     
+    ]
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>
+        <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )
