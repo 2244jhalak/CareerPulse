@@ -65,7 +65,7 @@ const Header = () => {
                      
                       {
                         user.photoURL?
-                        <img className="h-12 w-12 rounded-[50%]" src={user.photoURL} alt="" />
+                        <img referrerPolicy='no-referrer' className="h-12 w-12 rounded-[50%]" src={user.photoURL} alt="" />
                         :
                         <FaRegUserCircle className='text-2xl'></FaRegUserCircle>
                       }
