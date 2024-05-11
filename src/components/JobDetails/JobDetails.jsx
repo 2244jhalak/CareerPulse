@@ -4,6 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 
 const JobDetails = () => {
@@ -17,6 +18,14 @@ const JobDetails = () => {
     
     const handleSubmit =async e=>{
         e.preventDefault();
+        if(email===user?.email){
+            return alert('You can not apply for your own job');
+        }
+        if(startDate>new Date(Deadline)){
+            return alert('Deadline is over dude');
+        }
+        
+        
         const form=e.target;
         const userName=form.name.value;
         const userEmail=form.email.value;
@@ -31,10 +40,18 @@ const JobDetails = () => {
         const applicants=Applicants;
         const img=Image;
         const description=Description;
+        const status='Pending';
         const appliedData={
-            userName,userEmail,jobId,title,companyName,companyEmail,jobsDeadline,myDeadline,salary,applicants,img,description
+            userName,userEmail,jobId,title,companyName,companyEmail,jobsDeadline,myDeadline,salary,applicants,img,description,status
         }
-        console.log(appliedData);
+        try{
+            const {data}=await axios.post(`${import.meta.env.VITE_API_URL}/applied`,appliedData);
+            console.log(data);
+
+        }catch(err){
+            console.log(err);
+
+        }
     }
 
   
@@ -71,7 +88,7 @@ const JobDetails = () => {
             </div>
             <div>
                 <label className="text-gray-700 dark:text-gray-200" >Deadline</label>
-                <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+                <DatePicker selected={startDate} className="border-2 px-2 rounded-md" onChange={(date) => setStartDate(date)} />
                 
             </div>
 
