@@ -18,6 +18,7 @@ import PrivateRoute from './Routes/PrivateRoute';
 import MyJobs from './components/MyJobs/MyJobs';
 import AddJobs from './components/AddJobs/AddJobs';
 import AppliedJobs from './components/AppliedJobs/AppliedJobs';
+import JobDetails from './components/JobDetails/JobDetails';
 
 // import ErrorPage from './components/ErrorPage/ErrorPage';
 
@@ -32,8 +33,15 @@ const router = createBrowserRouter([
     children:[
       {
         path:"/",
-        element:<Home></Home>,
-        loader:()=>fetch(`${import.meta.env.VITE_API_URL}/jobs`),
+        element:<Home></Home>
+        
+      },
+      {
+        path:"/job/:id",
+        element:<PrivateRoute><JobDetails></JobDetails></PrivateRoute>,
+        loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/job/${params.id}`)
+
+
       },
       {
         path:"/login",

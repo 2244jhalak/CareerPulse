@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const JobsCard = ({job}) => {
     const {_id,Name,Title,Date,Deadline,Salary,Applicants} = job;
@@ -13,7 +14,7 @@ const JobsCard = ({job}) => {
                 <p className='font-semibold'>Deadline : {Deadline}</p>
             </div>
             <div className='text-right'>
-                <button className='btn btn-outline'>View Details</button>
+                <Link to={`/job/${_id}`}><button className='btn btn-outline'>View Details</button></Link>
             </div>   
             
         </div>

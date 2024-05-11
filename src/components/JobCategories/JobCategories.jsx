@@ -2,8 +2,18 @@ import PropTypes from 'prop-types';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import JobsCard from '../JobsCard/JobsCard';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const JobCategories = ({jobs}) => {
+const JobCategories = () => {
+  const [jobs,setJobs] = useState([]);
+  useEffect(()=>{
+    const getData=async()=>{
+      const {data}=await axios(`${import.meta.env.VITE_API_URL}/jobs`);
+      setJobs(data);
+    }
+    getData();
+  },[])
    
     return (
         <div className='my-10'>
