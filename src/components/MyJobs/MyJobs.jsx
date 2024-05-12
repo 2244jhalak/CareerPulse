@@ -3,7 +3,7 @@ import { FaEdit ,FaTrash} from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
-import { toast } from "react-toastify";
+import Swal from 'sweetalert2'
 import { Link } from "react-router-dom";
 
 
@@ -24,8 +24,20 @@ const MyJobs = () => {
       try{
         const {data}=await axios.delete(`${import.meta.env.VITE_API_URL}/job/${id}`);
         console.log(data);
-        getData();
-        toast.success('Delete Successful')
+        if(data.deletedCount>0){
+          Swal.fire({
+              title: "Successfully Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          
+            getData()
+          
+           
+          
+      }
+        
+        
         
 
     }catch(err){
@@ -65,7 +77,7 @@ const MyJobs = () => {
         <td>{job.Salary}</td>
         <td>{job.Applicants}</td>
         <td>{job.date}</td>
-        <td>{job.Deadline}</td>
+        <td>{new Date(job.Deadline).toLocaleDateString()}</td>
         <td>{job.email}</td>
         <td><button onClick={()=>handleDelete(job._id)}><FaTrash title="Delete"></FaTrash></button></td>
 
