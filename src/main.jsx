@@ -21,6 +21,7 @@ import AppliedJobs from './components/AppliedJobs/AppliedJobs';
 import JobDetails from './components/JobDetails/JobDetails';
 import UpdateJobs from './components/UpdateJobs/UpdateJobs';
 import ErrorPage from './components/ErrorPage/ErrorPage';
+import Blogs from './components/Blogs/Blogs';
 
 
 
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
         path:"/",
         element:<Home></Home>
         
+      },
+      {
+        path:"/blogs",
+        element:<Blogs></Blogs>
+
       },
       {
         path:"/job/:id",
