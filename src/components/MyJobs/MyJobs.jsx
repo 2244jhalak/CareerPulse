@@ -54,7 +54,7 @@ const MyJobs = () => {
     <thead>
       <tr>
         
-        <th>Post Name</th>
+        <th>Job Title</th>
         <th>Company</th>
         <th>Category</th>
         <th>Salary</th>
