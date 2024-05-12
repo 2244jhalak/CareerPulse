@@ -20,8 +20,9 @@ import AddJobs from './components/AddJobs/AddJobs';
 import AppliedJobs from './components/AppliedJobs/AppliedJobs';
 import JobDetails from './components/JobDetails/JobDetails';
 import UpdateJobs from './components/UpdateJobs/UpdateJobs';
+import ErrorPage from './components/ErrorPage/ErrorPage';
 
-// import ErrorPage from './components/ErrorPage/ErrorPage';
+
 
 
 
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    // errorElement:<ErrorPage></ErrorPage>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:"/",
