@@ -16,35 +16,56 @@ const MyJobs = () => {
       )
       setJobs(data);
   }
-    useEffect(()=>{
+  useEffect(()=>{
         
         getData();
-    },[user])
-    const handleDelete=async id=>{
-      try{
-        const {data}=await axios.delete(`${import.meta.env.VITE_API_URL}/job/${id}`);
-        console.log(data);
-        if(data.deletedCount>0){
-          Swal.fire({
-              title: "Successfully Deleted!",
+  },[user])
+
+
+    const handleDelete = async (id) => {
+      try {
+        const result = await Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        });
+    
+        if (result.isConfirmed) {
+          const response = await axios.delete(`${import.meta.env.VITE_API_URL}/job/${id}`);
+          
+          // Check if deletion was successful based on HTTP status code
+          if (response.status === 200) {
+            await Swal.fire({
+              title: "Deleted!",
               text: "Your file has been deleted.",
               icon: "success"
             });
-          
-            getData()
-          
-           
-          
+    
+            getData(); // Call your function to update data
+          } else {
+            // Handle unsuccessful deletion
+            Swal.fire({
+              title: "Error!",
+              text: "An error occurred while deleting the file.",
+              icon: "error"
+            });
+          }
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle other errors, such as network issues
+        Swal.fire({
+          title: "Error!",
+          text: "An error occurred while deleting the file.",
+          icon: "error"
+        });
       }
-        
-        
-        
-
-    }catch(err){
-        console.log(err);
-
-    }
-    }
+    };
+    
     return (
         <div className="my-10">
             <h3 className="text-3xl font-semibold text-center my-5">Welcome to my jobs</h3>
