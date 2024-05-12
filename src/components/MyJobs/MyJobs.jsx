@@ -3,21 +3,36 @@ import { FaEdit ,FaTrash} from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 
 const MyJobs = () => {
     const {user}=useContext(AuthContext);
     const [jobs,setJobs]=useState([]);
+    const getData=async()=>{
+      const {data}=await axios(
+          `${import.meta.env.VITE_API_URL}/jobs/${user?.email}`
+      )
+      setJobs(data);
+  }
     useEffect(()=>{
-        const getData=async()=>{
-            const {data}=await axios(
-                `${import.meta.env.VITE_API_URL}/jobs/${user?.email}`
-            )
-            setJobs(data);
-        }
+        
         getData();
     },[user])
-    console.log(jobs);
+    const handleDelete=async id=>{
+      try{
+        const {data}=await axios.delete(`${import.meta.env.VITE_API_URL}/job/${id}`);
+        console.log(data);
+        getData();
+        toast.success('Delete Successful')
+        
+
+    }catch(err){
+        console.log(err);
+
+    }
+    }
     return (
         <div className="my-10">
             <h3 className="text-3xl font-semibold text-center my-5">Welcome to my jobs</h3>
@@ -52,9 +67,9 @@ const MyJobs = () => {
         <td>{job.date}</td>
         <td>{job.Deadline}</td>
         <td>{job.email}</td>
-        <td><FaTrash className="cursor-pointer" title="Delete"></FaTrash></td>
+        <td><button onClick={()=>handleDelete(job._id)}><FaTrash title="Delete"></FaTrash></button></td>
 
-        <td><FaEdit className="cursor-pointer" title="Edit"></FaEdit></td>
+        <td><Link to={`/update/${job._id}`}><FaEdit title="Edit"></FaEdit></Link></td>
 
       </tr>
         )
