@@ -80,7 +80,8 @@ const router = createBrowserRouter([
       },
       {
         path:'/applied',
-        element:<PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>
+        element:<PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>,
+        
       }
      
       

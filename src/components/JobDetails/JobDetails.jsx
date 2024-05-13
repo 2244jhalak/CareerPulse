@@ -5,6 +5,8 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 
 const JobDetails = () => {
@@ -13,17 +15,18 @@ const JobDetails = () => {
     const {user}=useContext(AuthContext);
     const job=useLoaderData();
     
-    const {_id,Name,Title,Deadline,Salary,Applicants,Image,email,Description} = job;
+    const {_id,Name,Category,Title,Deadline,Salary,Applicants,Image,email,Description} = job;
     console.log(job);
     
     const handleSubmit =async e=>{
         e.preventDefault();
         if(email===user?.email){
-            return alert('You can not apply for your own job');
+            return toast('You can not apply for your own job');
         }
         if(startDate>new Date(Deadline)){
-            return alert('Deadline is over dude');
+            return toast('Deadline is over dude');
         }
+        toast('Successfully Applied');
         
         
         const form=e.target;
@@ -33,6 +36,7 @@ const JobDetails = () => {
         const title=Title;
         const companyName=Name;
         const companyEmail=email;
+        const category=Category;
         
         const jobsDeadline=Deadline;
         const myDeadline=startDate
@@ -42,7 +46,7 @@ const JobDetails = () => {
         const description=Description;
         const status='Pending';
         const appliedData={
-            userName,userEmail,jobId,title,companyName,companyEmail,jobsDeadline,myDeadline,salary,applicants,img,description,status
+            userName,userEmail,category,jobId,title,companyName,companyEmail,jobsDeadline,myDeadline,salary,applicants,img,description,status
         }
         try{
             const {data}=await axios.post(`${import.meta.env.VITE_API_URL}/applied`,appliedData);
@@ -94,6 +98,7 @@ const JobDetails = () => {
 
            
         </div>
+        <ToastContainer></ToastContainer>
 
         <div className="flex justify-end mt-6">
             <input className="py-2.5 px-5 text-center cursor-pointer leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600" type="submit" value="Submit"/>
