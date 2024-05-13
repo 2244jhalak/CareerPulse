@@ -5,7 +5,7 @@ import {FaRegUserCircle,FaWindowClose,FaBars } from 'react-icons/fa';
 
 import Logo from '../../../src/assets/images/logo.png'
 
-import { useContext, useState } from "react";
+import { useContext,  useState } from "react";
 
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from 'react-router-dom';
@@ -13,8 +13,14 @@ import { Link } from 'react-router-dom';
 
 
 
+
 const Header = () => {
   const [open,setOpen]=useState(false);  
+  
+  
+
+
+
   const {user,logOut}=useContext(AuthContext);
   const logOutUser=()=>{
     logOut();
@@ -37,9 +43,11 @@ const Header = () => {
          <img className='w-12 h-12' src={Logo} alt="" />
          <h3 className='text-3xl text-white lg:pl-3 md:pr-2 pr-2 font-semibold'>CareerPulse</h3>
          <ul className={`${open ?'top-12 block z-50':'-top-96 text-white bg-blue-950'} flex lg:flex-row flex-col px-10 py-2  absolute lg:static items-center rounded-b-lg ms-6 duration-1000 lg:gap-x-10 bg-blue-950 text-white`}>
+         
         <li className='hover:text-orange-400 mr-4'><Link to="/">Home</Link></li>
         <li className='hover:text-orange-400 mr-4'><Link to="/all">All Jobs</Link></li>
         <li className='hover:text-orange-400 mr-4'><Link to="/blogs">Blogs</Link></li>
+        
         
         <li>
         {
@@ -52,6 +60,7 @@ const Header = () => {
               <li className='hover:text-orange-400 mr-8'><Link to="/add">Add a job</Link></li>
         <li className='hover:text-orange-400 mr-8'><Link to="/my">My Jobs</Link></li>
         <li className='hover:text-orange-400 mr-8'><Link to="/applied">Applied Jobs</Link></li>
+        
 
               </ul>
               
@@ -107,4 +116,8 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
+
 

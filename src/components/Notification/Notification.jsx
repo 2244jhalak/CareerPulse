@@ -17,7 +17,7 @@ const Notification = () => {
             <div className="flex">
             
                  <input id="search" type="text" placeholder="Enter your email" className="input input-bordered w-[250px] max-w-xs" />
-                 <button className="btn btn-primary text-white font-semibold">Search</button>
+                 <button className="btn btn-primary text-white font-bold">Subscribe</button>
  
 
 

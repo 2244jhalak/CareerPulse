@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { FaGoogle,FaGithub,FaEye,FaEyeSlash } from 'react-icons/fa';
-import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { FaGoogle,FaEye,FaEyeSlash } from 'react-icons/fa';
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useContext, useState } from "react";
@@ -16,7 +16,7 @@ const {signInUser} = useContext(AuthContext);
 const location=useLocation();
   const navigate=useNavigate();  
 const googleProvider = new GoogleAuthProvider();
-const githubProvider=new GithubAuthProvider();
+
 const handleLogin=e=>{
   e.preventDefault();
   const email=e.target.email.value;
@@ -47,16 +47,7 @@ const handleGoogle=()=>{
 
   })
 }
-const handleGithub=()=>{
-  signInWithPopup(auth,githubProvider)
-  .then(result=>{
-    console.log(result.user);
-    navigate(location?.state?location.state:'/');
-  })
-  .catch(error=>{
-    console.log(error);
-  })
-}
+
     return (
         <div>
             <div className="hero my-10">
@@ -96,10 +87,7 @@ const handleGithub=()=>{
                 <FaGoogle className='text-blue-600 mr-3'></FaGoogle>
                 <h2 className='text-blue-600 font-semibold'>Login with Google</h2>
       </div>
-      <div onClick={handleGithub} className='flex items-center cursor-pointer border-2 px-4 mx-10 py-1.5 rounded-lg border-black mb-6'>
-                <FaGithub className='mr-3'></FaGithub>
-                <h2 className='text-black font-semibold'>Login with Github</h2>
-      </div>
+      
       <p className="ml-8 mb-4 dark:text-black">New to website? Please <Link className="underline" to="/register">Register</Link></p>
     </div>
     

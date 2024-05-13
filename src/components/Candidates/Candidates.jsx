@@ -3,11 +3,14 @@ import Xavi from '../../../src/assets/images/Xavi-Lopez.jpg'
 import Sarah from '../../../src/assets/images/Sarah-Taylor.jpg'
 import Chelsea from '../../../src/assets/images/Chelsea-Green.jpg'
 
+
+
 const Candidates = () => {
+    
     return (
         <div className="my-10">
             <h3 className="text-center font-semibold text-4xl my-10">Happy Candidates</h3>
-            <div className="carousel w-full">
+        <div className="carousel w-full">
   <div id="item1" className="carousel-item w-full">
     <div className="text-center w-full space-y-4">
     <h4 className="text-3xl font-bold">Facebook</h4>
