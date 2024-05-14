@@ -117,7 +117,7 @@ email:email
         </div>
         <div>
                 <label className="text-gray-700 dark:text-gray-200" >Deadline</label>
-                <DatePicker selected={startDate} className="border-2 px-2 rounded-md my-5" onChange={(date) => setStartDate(date)} />
+                <DatePicker selected={startDate} className="border-2 px-2 rounded-md my-5 dark:bg-black" onChange={(date) => setStartDate(date)} />
                 
         </div>
 

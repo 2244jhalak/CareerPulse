@@ -1,11 +1,11 @@
-
+import './Header.css'
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
 import {FaRegUserCircle,FaWindowClose,FaBars } from 'react-icons/fa';
 
 import Logo from '../../../src/assets/images/logo.png'
 
-import { useContext,  useState } from "react";
+import { useContext,  useEffect,  useState } from "react";
 
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link } from 'react-router-dom';
@@ -15,6 +15,25 @@ import { Link } from 'react-router-dom';
 
 
 const Header = () => {
+  const [darkMode, setDarkMode] = useState(() => {
+    // Retrieve dark mode preference from localStorage, default to false if not found
+    const savedDarkMode = localStorage.getItem('darkMode');
+    return savedDarkMode === 'true'; // Convert string to boolean
+});
+
+useEffect(() => {
+    // Apply dark mode class to document.documentElement
+    if (darkMode) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+    // Update localStorage with the new dark mode state
+    localStorage.setItem('darkMode', darkMode);
+}, [darkMode]);
+
+
+
   const [open,setOpen]=useState(false);  
   
   
@@ -44,9 +63,24 @@ const Header = () => {
          <h3 className='text-3xl text-white lg:pl-3 md:pr-2 pr-2 font-semibold'>CareerPulse</h3>
          <ul className={`${open ?'top-12 block z-50':'-top-96 text-white bg-blue-950'} flex lg:flex-row flex-col px-10 py-2  absolute lg:static items-center rounded-b-lg ms-6 duration-1000 lg:gap-x-10 bg-blue-950 text-white`}>
          
-        <li className='hover:text-orange-400 mr-4'><Link to="/">Home</Link></li>
-        <li className='hover:text-orange-400 mr-4'><Link to="/all">All Jobs</Link></li>
-        <li className='hover:text-orange-400 mr-4'><Link to="/blogs">Blogs</Link></li>
+        <li className='hover:text-orange-400 mr-2'><Link to="/">Home</Link></li>
+        <li className='hover:text-orange-400 mr-2'><Link to="/all">All Jobs</Link></li>
+        <li className='hover:text-orange-400 mr-2'><Link to="/blogs">Blogs</Link></li>
+        <li className={`font-roboto ${darkMode ? 'dark' : ''} dark:bg-black dark:text-white`}>
+        <div className="container mx-auto">
+                <button
+                    onClick={() => {
+                        setDarkMode(!darkMode)
+                    }}
+                    className="bg-black text-white px-2 py-1 rounded hover:bg-stone-700 dark:bg-white dark:text-black"
+                >
+                    {!darkMode ? '🌚Dark' : '🌞Light'}
+                </button>
+            </div>
+        
+
+
+        </li>
         
         
         <li>
@@ -57,9 +91,9 @@ const Header = () => {
               
               
               <ul className='flex lg:flex-row md:flex-col flex-col'>
-              <li className='hover:text-orange-400 mr-8'><Link to="/add">Add a job</Link></li>
-        <li className='hover:text-orange-400 mr-8'><Link to="/my">My Jobs</Link></li>
-        <li className='hover:text-orange-400 mr-8'><Link to="/applied">Applied Jobs</Link></li>
+              <li className='hover:text-orange-400 mr-2'><Link to="/add">Add a job</Link></li>
+        <li className='hover:text-orange-400 mr-2'><Link to="/my">My Jobs</Link></li>
+        <li className='hover:text-orange-400 mr-2'><Link to="/applied">Applied Jobs</Link></li>
         
 
               </ul>

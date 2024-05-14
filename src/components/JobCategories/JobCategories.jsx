@@ -20,7 +20,7 @@ const JobCategories = () => {
             <h3 className='text-center text-3xl font-semibold'>Our Jobs List</h3>
             <div>
             <Tabs>
-    <TabList className='flex items-center justify-center'>
+    <TabList className='flex items-center  lg:flex-row md:flex-row flex-col justify-center'>
       <Tab>All Jobs</Tab>
       <Tab>On-Site Job</Tab>
       <Tab>Remote Job</Tab>

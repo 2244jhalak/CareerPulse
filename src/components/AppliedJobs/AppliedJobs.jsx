@@ -70,14 +70,11 @@ const getData = async () => {
     getData();
   }, [user]);
   const handleCategory=async filter=>{
+    await axiosSecure.get(url)
+  .then(res=>{
+    setJobs((res.data).filter(d=>d.category===filter))
+  })
   
-    
-    
-    const getData=async()=>{
-        const {data}=await axios(`${import.meta.env.VITE_API_URL}/applied/${user.email}`);
-        setJobs(data.filter(d=>d.category===filter));
-      }
-      getData();
 }
 
   return (
@@ -98,8 +95,8 @@ const getData = async () => {
       {/* Dropdown Start */}
       <div className="ml-20 my-5">
             <div className="dropdown dropdown-end">
-  <div tabIndex={0} role="button" className="btn m-1">Job Category</div>
-  <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+  <div tabIndex={0} role="button" className="btn m-1">Filter By Job Category</div>
+  <ul tabIndex={0} className="dropdown-content z-[1] dark:text-black menu p-2 shadow bg-base-100 rounded-box w-52">
     <li onClick={()=>handleCategory('On-Site Job')}><a>On-Site Job</a></li>
     <li onClick={()=>handleCategory('Remote Job')}><a>Remote Job</a></li>
     <li onClick={()=>handleCategory('Hybrid')}><a>Hybrid</a></li>

@@ -79,7 +79,7 @@ const JobDetails = () => {
             <p>Applicants : {Applicants}</p>
             {/* Modal start */}
             {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn btn-outline px-5" onClick={()=>document.getElementById('my_modal_1').showModal()}>Apply</button>
+<button className="btn btn-outline dark:text-white px-5" onClick={()=>document.getElementById('my_modal_1').showModal()}>Apply</button>
 <dialog id="my_modal_1" className="modal">
   <div className="modal-box">
   <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
@@ -98,7 +98,7 @@ const JobDetails = () => {
             </div>
             <div>
                 <label className="text-gray-700 dark:text-gray-200" >Deadline</label>
-                <DatePicker selected={startDate} className="border-2 px-2 rounded-md" onChange={(date) => setStartDate(date)} />
+                <DatePicker selected={startDate} className="border-2 px-2 rounded-md dark:bg-black" onChange={(date) => setStartDate(date)} />
                 
             </div>
 

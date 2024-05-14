@@ -98,7 +98,7 @@ const MyJobs = () => {
         jobs.map(job=>
             <tr key={job._id}>
         
-        <td className="flex items-center gap-x-1"><img className="h-10 w-10 rounded-[50%]" src={job.Image} alt="" title={job.Description} /><span>{job.Title}</span></td>
+        <td className="flex lg:flex-row md:flex-col flex-col items-center gap-x-1"><img className="h-10 w-10 rounded-[50%]" src={job.Image} alt="" title={job.Description} /><span>{job.Title}</span></td>
         <td>{job.Name}</td>
         <td>{job.Category}</td>
         <td>{job.Salary}</td>

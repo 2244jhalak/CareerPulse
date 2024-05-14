@@ -14,7 +14,7 @@ const JobsCard = ({job}) => {
                 <p className='font-semibold'>Deadline : {new Date(Deadline).toLocaleDateString()}</p>
             </div>
             <div className='text-right'>
-                <Link to={`/job/${_id}`}><button className='btn btn-outline'>View Details</button></Link>
+                <Link to={`/job/${_id}`}><button className='btn btn-outline dark:text-white'>View Details</button></Link>
             </div>   
             
         </div>
