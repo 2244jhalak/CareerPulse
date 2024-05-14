@@ -1,21 +1,27 @@
 
 import { FaEdit ,FaTrash} from "react-icons/fa";
-import { useContext, useEffect, useState } from "react";
+
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { Link } from "react-router-dom";
-
-
+import { useContext, useEffect, useState } from "react";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+    
 const MyJobs = () => {
     const {user}=useContext(AuthContext);
     const [jobs,setJobs]=useState([]);
-    const getData=async()=>{
-      const {data}=await axios(
-          `${import.meta.env.VITE_API_URL}/jobs/${user?.email}`
-      )
-      setJobs(data);
-  }
+    const axiosSecure=useAxiosSecure();
+
+    const url=`/jobs/${user.email}`;
+    
+    const getData = async () => {
+      
+      await axiosSecure.get(url)
+      .then(res=>{
+        setJobs(res.data)
+      })
+    }
   useEffect(()=>{
         
         getData();

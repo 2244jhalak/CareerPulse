@@ -11,10 +11,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
+  
   const [showPassword,setShowPassword]= useState(false);
 const {signInUser} = useContext(AuthContext);
 const location=useLocation();
-  const navigate=useNavigate();  
+  const navigate=useNavigate(); 
+ 
 const googleProvider = new GoogleAuthProvider();
 
 const handleLogin=e=>{

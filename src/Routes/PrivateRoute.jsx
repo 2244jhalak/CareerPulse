@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { AuthContext } from "../provider/AuthProvider";
 
+  import 'react-toastify/dist/ReactToastify.css';
+
 const PrivateRoute = ({children}) => {
     const {user,loading}=useContext(AuthContext);
     const location=useLocation();
@@ -18,7 +20,14 @@ const PrivateRoute = ({children}) => {
     if(user){
         return children;
     }
-    return <Navigate state={location.pathname} to='/login'></Navigate>
+    else{
+        
+        
+        return <Navigate state={location.pathname} to='/login' replace={true}></Navigate>
+    }
+    
+       
+
     
 };
 PrivateRoute.propTypes = {

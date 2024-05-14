@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext,  useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import DatePicker from "react-datepicker";
@@ -16,7 +16,11 @@ const JobDetails = () => {
     const job=useLoaderData();
     
     const {_id,Name,Category,Title,Deadline,Salary,Applicants,Image,email,Description} = job;
-    console.log(job);
+    
+    
+   
+   
+    
     
     const handleSubmit =async e=>{
         e.preventDefault();
@@ -57,6 +61,8 @@ const JobDetails = () => {
 
         }
     }
+
+   
 
   
     return (
