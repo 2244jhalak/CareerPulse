@@ -27,7 +27,7 @@ const Root = () => {
     
     
     return (
-        <div className={`font-roboto ${darkMode ? 'dark' : ''} dark:bg-black dark:text-white`}>
+        <div className={`font-roboto ${darkMode ? 'dark' : ''} dark:bg-black font-roboto dark:text-white`}>
             
             <div className="container mx-auto hidden">
                 <button
