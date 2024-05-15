@@ -29,7 +29,7 @@ const AllJobs = () => {
             <h3 className="text-3xl font-semibold my-5 text-center">All Jobs {jobs.length}</h3>
             <div className="flex items-center justify-center mb-5">
             
-                 <input id="search" type="text" placeholder="Search here" className="input input-bordered w-full max-w-xs" />
+                 <input id="search" type="text" placeholder="Search here" className="input input-bordered w-full max-w-xs dark:text-black" />
                  <button onClick={handleSearch} className="btn btn-primary text-white font-semibold">Search</button>
  
 
@@ -41,10 +41,10 @@ const AllJobs = () => {
     <thead>
       <tr>
         
-        <th>Job Title</th>
-        <th>Job Posting Date</th>
-        <th>Application Deadline</th>
-        <th>Salary Range</th>
+        <th className="dark:text-white">Job Title</th>
+        <th className="dark:text-white">Job Posting Date</th>
+        <th className="dark:text-white">Application Deadline</th>
+        <th className="dark:text-white">Salary Range</th>
         
         <th></th>
       </tr>

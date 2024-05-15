@@ -81,14 +81,14 @@ const MyJobs = () => {
     <thead>
       <tr>
         
-        <th>Job Title</th>
-        <th>Company</th>
-        <th>Category</th>
-        <th>Salary</th>
-        <th>Applicants</th>
-        <th>Published Date</th>
-        <th>Deadline</th>
-        <th>Email</th>
+        <th className="dark:text-white">Job Title</th>
+        <th className="dark:text-white">Company</th>
+        <th className="dark:text-white">Category</th>
+        <th className="dark:text-white">Salary</th>
+        <th className="dark:text-white">Applicants</th>
+        <th className="dark:text-white">Published Date</th>
+        <th className="dark:text-white">Deadline</th>
+        <th className="dark:text-white">Email</th>
         <th></th>
         <th></th>
       </tr>
