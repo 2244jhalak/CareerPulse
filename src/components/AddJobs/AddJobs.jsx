@@ -17,7 +17,7 @@ const AddJobs = () => {
         const email=form.email.value;
         const category=form.category.value;
         const description=form.description.value;
-        const applicants=form.applicants.value;
+        const applicants=parseInt(form.applicants.value);
         const salary=form.salary.value;
         const image=form.image.value;
         const title=form.title.value;
@@ -92,7 +92,7 @@ email:email
             </div>
             <div>
                 <label className="text-gray-700 dark:text-gray-200">Applicants</label>
-                <input id="username" type="number" name="applicants" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                <input id="username" type="number" name="applicants" defaultValue={0} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
             </div>
 
             <div>

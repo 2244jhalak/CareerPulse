@@ -61,7 +61,8 @@ const JobDetails = () => {
 
         }
     }
-
+    
+    
    
 
   
