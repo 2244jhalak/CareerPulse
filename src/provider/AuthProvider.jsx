@@ -46,7 +46,7 @@ const AuthProvider = ({children}) => {
                 })
             }
             else{
-                axios.post(`${import.meta.env.VITE_API_URL}/jwt`,loggedUser,{
+                axios.post(`${import.meta.env.VITE_API_URL}/logout`,loggedUser,{
                     withCredentials:true
                 })
                 .then(res=>{
