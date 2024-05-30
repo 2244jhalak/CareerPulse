@@ -4,6 +4,10 @@ import Candidates from "../Candidates/Candidates";
 import JobCategories from "../JobCategories/JobCategories";
 import Notification from "../Notification/Notification";
 
+import Resume from "../Resume/Resume";
+
+
+
 
 const Home = () => {
     
@@ -11,6 +15,9 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            
+            
+            
             <JobCategories></JobCategories>
             
             <motion.div
@@ -23,7 +30,8 @@ const Home = () => {
     </motion.div>
     
     <Notification></Notification>
-
+    <Resume></Resume>
+    
             
             
             

@@ -22,6 +22,7 @@ import JobDetails from './components/JobDetails/JobDetails';
 import UpdateJobs from './components/UpdateJobs/UpdateJobs';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Blogs from './components/Blogs/Blogs';
+import ResumeBuilder from './components/ResumeBuilder/ResumeBuilder';
 
 
 
@@ -79,9 +80,12 @@ const router = createBrowserRouter([
         element:<PrivateRoute><AddJobs></AddJobs></PrivateRoute>
       },
       {
+        path:"/resumeBuilder",
+        element:<PrivateRoute><ResumeBuilder></ResumeBuilder></PrivateRoute>,
+      },
+      {
         path:'/applied',
         element:<PrivateRoute><AppliedJobs></AppliedJobs></PrivateRoute>,
-        
       }
      
       

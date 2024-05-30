@@ -39,16 +39,18 @@ const AllJobs = () => {
   return (
     <div className="my-10">
       <h3 className="text-3xl font-semibold my-5 text-center">All Jobs {filteredJobs.length}</h3>
-      <div className="flex items-center justify-center mb-5">
+      <div className="flex lg:flex-row md:flex-row flex-col items-center justify-center mb-5">
+       
         <input
           id="search"
           type="text"
           placeholder="Search here"
           className="input input-bordered w-full max-w-xs dark:text-black"
         />
-        <button onClick={handleSearch} className="btn btn-primary text-white font-semibold">
+        <button onClick={handleSearch} className="btn btn-primary text-white font-semibold my-3">
           Search
         </button>
+       
         <VoiceSearch onSearch={handleVoiceSearch} />
       </div>
       <div className="overflow-x-auto">
