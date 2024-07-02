@@ -1,8 +1,22 @@
-# React + Vite
+## Overview
+This s a job search platform where users can post and apply for jobs.At first you can register using your email and password or Google. Once registered, you can add your own jobs. These jobs will be visible to you when you are logged in. Additionally, you can update own jobs and delete your jobs as needed. Furthermore, you have the option to view and apply other users' jobs and details.But cannot apply for their own postings or jobs past the deadline.
+## Features
+- Posting Jobs: Buyers can add, edit, and delete their own job postings.
+- Applying for Jobs: Job seekers can apply for available jobs but cannot apply for their own postings or jobs past the deadline.
+- Account Management: Users can create accounts using email, password, or Google authentication through Firebase.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Key Technologies
+- React.js
+- Node.js
+- Express.js
+- MongoDB
+- Firebase
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How to Run Locally
+- Clone the repository: `https://github.com/2244jhalak/Job-Portal.git`
+- Install dependencies: `npm install`
+- Start the server: `npm start`
+
+## Live Link
+- [CareerPulse](https://b9a11-client-side-2244jhalak.web.app/)
